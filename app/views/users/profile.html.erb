@@ -1,0 +1,15 @@
+<header>
+  <h1> Your Profile </h1>
+</header>
+
+<br><%= @user.first_name %> <%= @user.last_name %><br>
+
+<%= @user.username %><br>
+<%= @user.email %><br>
+
+<button><%= link_to "Your Cocktails", user_path(@user) %></button><br>
+<button><%= link_to "Edit Profile", edit_user_url(@user), method: :get %></button><br>
+
+<%= form_tag "/users/#{current_user.id}" do%>
+  <%= submit_tag "Delete Account" %>
+<% end %>
