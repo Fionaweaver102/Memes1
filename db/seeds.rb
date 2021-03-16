@@ -4,4 +4,8 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Meme.destroy_all 
+
+puts "seeding database"
+MemeGenerator::Adapter.get_memes 
+puts "done."
