@@ -3,40 +3,26 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
-
-    render json: @comments
+    # meme = Meme.find_by(id: params[:id])
+    comments = Comment.all
+    render json: Comment.arr_to_json 
   end
 
-  # GET /comments/1
-  def show
-    render json: @comment
-  end
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
+    comment = Comment.new(comment_params)
+    meme = Meme.find_or_create_by(id: params[:meme_id])
+    comment.meme_id = meme.id
 
-    if @comment.save
-      render json: @comment, status: :created, location: @comment
+    if comment.save
+      render json: comment.instance_to_json
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: comment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /comments/1
-  def update
-    if @comment.update(comment_params)
-      render json: @comment
-    else
-      render json: @comment.errors, status: :unprocessable_entity
-    end
-  end
 
-  # DELETE /comments/1
-  def destroy
-    @comment.destroy
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -46,6 +32,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:content, :user_id, :meme_id)
+      params.require(:comment).permit(:content, :meme_id)
     end
 end

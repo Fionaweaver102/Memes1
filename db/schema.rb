@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_023605) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
     t.integer "meme_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -23,17 +22,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_023605) do
   create_table "memes", force: :cascade do |t|
     t.string "title"
     t.string "image_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
-    t.string "email"
-    t.string "profile_img"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

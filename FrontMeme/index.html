@@ -4,6 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./tailwind.css" rel="stylesheet">
+  <style>
+    .comments-container {
+      background: #f1f1f1;
+      border-top: 1px solid #d0d0d0;
+    }
+
+    .comments-container>div {
+      padding: 5px 25px;
+      border-bottom: 1px solid #d0d0d0;
+    }
+
+    form input {
+      width: 67%;
+      border: 1px solid;
+      border-radius: 10px;
+      border-color: #d2d2d2;
+      background: #f7f7f7;
+    }
+
+    form {
+      padding: 12px 12px 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    form button {
+      background: #194faf;
+      color: white;
+      font-size: 14px;
+      padding: 5px;
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+  </style>
 </head>
 
 <body>
@@ -80,10 +114,10 @@
       </div>
     </nav>
 
-    <div id="comment-form" class="hidden">
+    <form id="comment-form" class="hidden">
       <input type="text" name="content">
-      <button class="js-submit">Add comment</button>
-    </div>
+      <button class="js-submit" data-memeid="">Add comment</button>
+    </form>
 
     <div class="container m-auto">
       <div class="w-2/5 m-auto py-6">
@@ -99,6 +133,7 @@
     width: 100%;
   }
 </style>
+<script type="text/javascript" src="src/Comment.js"></script>
 <script type="text/javascript" src="src/meme.js"></script>
 <script type="text/javascript" src="src/index.js"></script>
 

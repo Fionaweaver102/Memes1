@@ -1,6 +1,6 @@
 class Meme < ApplicationRecord
-  # has_many :comments 
-  # accepts_nested_attributes_for :comments
+  has_many :comments 
+
 
   def self.arr_to_json 
     self.all.map do |p|
@@ -12,7 +12,8 @@ class Meme < ApplicationRecord
     {
       id: self.id,
       title: self.title,
-      image_url: self.image_url 
+      image_url: self.image_url,
+      comments: self.comments
     }
   end 
 end
